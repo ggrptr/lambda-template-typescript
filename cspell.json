@@ -1,0 +1,26 @@
+{
+    // Version of the setting file.  Always 0.1
+    "version": "0.2",
+    // language - current active spelling language
+    "language": "en",
+    // words - list of words to be always considered correct
+    "words": [],
+    // flagWords - list of words to be always considered incorrect
+    // This is useful for offensive words and common spelling errors.
+    // For example "hte" should be "the"
+    "flagWords": ["hte"],
+    // Specify paths/files to ignore.
+    "ignorePaths": [
+        "cspell.json",
+        "jest.config.ts",
+        "node_modules",
+        ".prettierrc",
+        "dist",
+        "package-lock.json",
+        ".git",
+        "tsconfig.tsbuildinfo",
+        "coverage",
+        "unit-test-results-junit.xml",
+        "unit-test-results.html"
+    ]
+}

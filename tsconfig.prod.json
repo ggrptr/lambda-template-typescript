@@ -1,0 +1,9 @@
+{
+    "extends": "./tsconfig",
+    "compilerOptions": {
+        "removeComments": true,
+        "declaration": false,
+        "incremental": false
+    },
+    "exclude": ["**/jest.config.ts", "**/*.spec.ts"]
+}
