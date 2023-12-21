@@ -3,7 +3,8 @@
     "compilerOptions": {
         "removeComments": true,
         "declaration": false,
-        "incremental": false
+        "incremental": false,
+        "outDir": "./dist/src-prod",
     },
     "exclude": ["**/jest.config.ts", "**/*.spec.ts"]
 }

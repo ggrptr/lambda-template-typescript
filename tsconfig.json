@@ -9,7 +9,7 @@
         "allowSyntheticDefaultImports": true,
         "target": "ES6",
         "sourceMap": true,
-        "outDir": "./dist",
+        "outDir": "./dist/src",
         "baseUrl": "./src",
         "rootDir": "./src",
         "incremental": true,
