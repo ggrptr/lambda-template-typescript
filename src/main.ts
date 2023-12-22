@@ -5,3 +5,8 @@ export async function handler(event: unknown) {
     logger.info('Event: ', event);
     return 'Hello World!';
 }
+
+// For testing purposes only
+if (require.main === module) {
+    handler({});
+}
