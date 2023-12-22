@@ -1,4 +1,4 @@
-name: ci
+name: Validating and testing code
 
 on:
     push:
@@ -35,3 +35,8 @@ jobs:
 
             - name: Tests
               run: npm run test:coverage
+
+            - name: Coverage
+              uses: irongut/CodeCoverageSummary@v1.3.0
+              with:
+                filename: coverage/cobertura-coverage.xml
