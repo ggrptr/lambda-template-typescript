@@ -40,3 +40,6 @@ jobs:
               uses: irongut/CodeCoverageSummary@v1.3.0
               with:
                   filename: coverage/cobertura-coverage.xml
+                  badge: true
+                  fail_below_min: true
+                  format: markdown
