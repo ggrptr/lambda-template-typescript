@@ -28,10 +28,11 @@ It's a bit complicated to separate the local and deployment build (especially th
 but it's necessary if I want to use the same local project for local development and test terraform deployments.
 
 With Husky, the following scripts executed automatically on each commit:
-* npm run lint
-*  npm run format
-*  npm run spell
-*  npm run test
+
+-   npm run lint
+-   npm run format
+-   npm run spell
+-   npm run test
 
 Additionally, the commit messages checked with [commitlint](https://commitlint.js.org/#/) to ensure the commit messages follow the [conventional commit](https://www.conventionalcommits.org/en/v1.0.0/) format.
 
