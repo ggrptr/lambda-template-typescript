@@ -6,7 +6,7 @@ on:
         branches-ignore:
             - 'main'
 permissions:
-  pull-requests: write
+    pull-requests: write
 
 jobs:
     pull_request:
@@ -18,7 +18,7 @@ jobs:
               uses: repo-sync/pull-request@v2
               with:
                   destination_branch: 'main'
-                  pr_title: 'feat: PLACEHOLDER TITLE'
+                  pr_title: '${{ GITHUB_REF}}'
                   pr_template: '.github/pull_request_template.md'
                   #pr_reviewer: "${{ github.actor }}"
                   pr_draft: true
