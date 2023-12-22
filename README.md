@@ -37,6 +37,7 @@ With Husky, the following scripts executed automatically on each commit:
 Additionally, the commit messages checked with [commitlint](https://commitlint.js.org/#/) to ensure the commit messages follow the [conventional commit](https://www.conventionalcommits.org/en/v1.0.0/) format.
 
 #### TODO coverage badge
+
 #### TODO pull request template
 
 **[MIT License](LICENSE)**
