@@ -2,21 +2,21 @@ name: Automatically create / update pull request
 
 # run this workflow only on new feature branches, not when they're merged to main
 on:
-  push:
-    branches-ignore:
-      - "main"
+    push:
+        branches-ignore:
+            - 'main'
 
 jobs:
-  create_pr_repo_sync:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Create pull request
-        id: open-pr
-        uses: repo-sync/pull-request@v2
-        with:
-          destination_branch: "main"
-          pr_title: "feat: PLACEHOLDER TITLE"
-          pr_template: ".github/pull_request_template.md"
-          #pr_reviewer: "${{ github.actor }}"
-          pr_draft: true
+    create_pr_repo_sync:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - name: Create pull request
+              id: open-pr
+              uses: repo-sync/pull-request@v2
+              with:
+                  destination_branch: 'main'
+                  pr_title: 'feat: PLACEHOLDER TITLE'
+                  pr_template: '.github/pull_request_template.md'
+                  #pr_reviewer: "${{ github.actor }}"
+                  pr_draft: true
