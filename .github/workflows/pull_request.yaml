@@ -5,9 +5,11 @@ on:
     push:
         branches-ignore:
             - 'main'
+permissions:
+  pull-requests: write
 
 jobs:
-    create_pr_repo_sync:
+    pull_request:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v3
