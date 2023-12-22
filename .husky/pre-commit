@@ -5,5 +5,4 @@ npm run lint
 npm run format
 npm run spell
 npm run test
-npm test
 
