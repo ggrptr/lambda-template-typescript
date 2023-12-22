@@ -16,9 +16,9 @@
         "test": "jest",
         "test:debug": "jest --runInBand",
         "test:coverage": "jest --coverage --runInBand",
-        "package:modules" : "cp package*.json dist && cd dist && npm ci --omit dev && mkdir nodejs && mv node_modules nodejs/node_modules && zip -rm modules.zip nodejs && rm package*.json",
-        "package:src" : "npm run build:prod && cd dist/src-prod && zip -rm ../src.zip * && cd .. && rm -rf src-prod",
-        "package" : "npm run package:modules && npm run package:src"
+        "package:modules": "cp package*.json dist && cd dist && npm ci --omit dev && mkdir nodejs && mv node_modules nodejs/node_modules && zip -rm modules.zip nodejs && rm package*.json",
+        "package:src": "npm run build:prod && cd dist/src-prod && zip -rm ../src.zip * && cd .. && rm -rf src-prod",
+        "package": "npm run package:modules && npm run package:src"
     },
     "dependencies": {
         "winston": "^3.11.0"
