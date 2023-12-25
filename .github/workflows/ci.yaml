@@ -1,0 +1,46 @@
+name: Validating and testing code
+
+on:
+    push:
+        branches:
+            - 'main'
+    pull_request:
+        branches:
+            - '**'
+
+jobs:
+    Validating:
+        strategy:
+            matrix:
+                node-version: ['20.x']
+        runs-on: ubuntu-latest
+        if: "!contains(github.event.head_commit.message, '[ci skip]')"
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
+
+            - name: Use Node.js ${{ matrix.node-version }}
+              uses: actions/setup-node@v3
+              with:
+                  node-version: ${{ matrix.node-version }}
+
+            - name: Setup dependencies
+              run: npm ci
+
+            - name: Linting
+              run: npm run lint
+
+            - name: Spell
+              run: npm run spell
+
+            - name: Tests
+              run: npm run test:coverage
+
+            - name: Coverage
+              uses: irongut/CodeCoverageSummary@v1.3.0
+              with:
+                  filename: coverage/cobertura-coverage.xml
+                  badge: true
+                  fail_below_min: true
+                  format: markdown
+                  output: both

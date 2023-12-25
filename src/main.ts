@@ -7,6 +7,7 @@ export async function handler(event: unknown) {
 }
 
 // For testing purposes only
+/* istanbul ignore next */
 if (require.main === module) {
     handler({});
 }
