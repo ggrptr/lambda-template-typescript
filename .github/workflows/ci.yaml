@@ -4,9 +4,9 @@ on:
     push:
         branches-ignore:
             - main
-    pull_request:
-        branches:
-            - "**"
+    #pull_request:
+    #    branches:
+    #        - main
 
 permissions:
     pull-requests: write
