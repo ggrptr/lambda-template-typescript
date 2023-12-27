@@ -2,8 +2,10 @@ name: Validating and testing code
 
 on:
     push:
-        branches-ignore:
-            - main
+        branches:
+            - "**"
+        #branches-ignore:
+        #    - main
     #pull_request:
     #    branches:
     #        - main
