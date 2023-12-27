@@ -30,10 +30,10 @@ jobs:
             - name: Linting
               run: npm run lint
 
-            - name: Spell
+            - name: Spelling
               run: npm run spell
 
-            - name: Tests
+            - name: Testing
               run: npm run test:coverage
 
             - name: Coverage
@@ -44,3 +44,11 @@ jobs:
                   fail_below_min: true
                   format: markdown
                   output: both
+                  thresholds: "60 80"
+
+            - name: Adding Coverage PR Comment
+              uses: marocchino/sticky-pull-request-comment@v2
+              if: github.event_name == 'pull_request'
+              with:
+                recreate: true
+                path: code-coverage-results.md
