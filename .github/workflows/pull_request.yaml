@@ -21,8 +21,8 @@ jobs:
               id: open-pr
               uses: repo-sync/pull-request@v2
               with:
-                  destination_branch: "main"
-                  pr_title: "${{ steps.extract_branch.outputs.branch }}"
-                  pr_template: ".github/pull_request_template.md"
+                  destination_branch: 'main'
+                  pr_title: '${{ steps.extract_branch.outputs.branch }}'
+                  pr_template: '.github/pull_request_template.md'
                   #pr_reviewer: "${{ github.actor }}"
                   pr_draft: false
