@@ -7,9 +7,11 @@ A simple hello world AWS Lambda function written in TypeScript, to use as a temp
 It contains the tools I use to develop, test and deploy my TS lambda functions.
 
 ## Functionality
+
 The example is a simple hello world function, that returns a greeting message.
 
 ## Scripts
+
 The list and explanation of the scripts in the `package.json` :
 
 -   prepare: at the first running of npm, this hook will automatically install the husky hooks.
@@ -31,8 +33,8 @@ The list and explanation of the scripts in the `package.json` :
 It's a bit complicated to separate the local and deployment build (especially the node_modules directory),
 but it's necessary if I want to use the same local project for local development and test terraform deployments.
 
-
 ## Commit hooks
+
 With Husky, the following scripts executed automatically on each commit:
 
 -   npm run lint
@@ -43,25 +45,27 @@ With Husky, the following scripts executed automatically on each commit:
 Additionally, the commit messages checked with [commitlint](https://commitlint.js.org/#/) to ensure the commit messages follow the [conventional commit](https://www.conventionalcommits.org/en/v1.0.0/) format.
 
 ## Github Actions
+
 Runs on every push to the main branch, and on create or update every pull request.
 The project contains a Github Actions workflows, that runs the following steps, with the defined matrix:
 
 ### ci.yml
-* Checkouts the code
-* Initializes the node environment
-* Installs dependencies
-* Runs linter
-* Runs spell checker
-* Runs tests
-* TODO: create coverage report
+
+-   Checkouts the code
+-   Initializes the node environment
+-   Installs dependencies
+-   Runs linter
+-   Runs spell checker
+-   Runs tests
+-   TODO: create coverage report
 
 ### pull-request.yaml
+
 Runs on every push, if the target branch is not the main branch.
 
-* Checkouts the code #TODO is it necessary?
-* Gets the branch name
-* Creates a pull request to the main branch, using the template in the .github folder
-
+-   Checkouts the code #TODO is it necessary?
+-   Gets the branch name
+-   Creates a pull request to the main branch, using the template in the .github folder
 
 **[MIT License](LICENSE)**
 
