@@ -1,22 +1,22 @@
 name: Validating and testing code
 
 on:
-  push:
-    branches:
-      - '**'
+    push:
+        branches:
+            - '**'
 
 permissions:
-  pull-requests: write
+    pull-requests: write
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - id: checkout
-        name: Checkout
-        uses: actions/checkout@v3
-      - id: setup-node
-        name: Setup Node.js 20.x
-        uses: actions/setup-node@v3
-        with:
-          node-version: 20.x
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - id: checkout
+              name: Checkout
+              uses: actions/checkout@v3
+            - id: setup-node
+              name: Setup Node.js 20.x
+              uses: actions/setup-node@v3
+              with:
+                  node-version: 20.x
