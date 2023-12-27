@@ -4,9 +4,9 @@ on:
     push:
         branches:
             - '**'
-    #pull_request:
-    #    branches:
-    #        - '**'
+    pull_request:
+        branches:
+            - '**'
 
 jobs:
     Validating:
@@ -42,15 +42,14 @@ jobs:
               id: extract_branch
 
             - name: Creating pull request
-              if : github.event_name != "pull_request"
+              if: github.event_name != "pull_request"
               uses: repo-sync/pull-request@v2
               with:
-                destination_branch: 'main'
-                pr_title: '${{ steps.extract_branch.outputs.branch }}'
-                pr_template: '.github/pull_request_template.md'
-                #pr_reviewer: "${{ github.actor }}"
-                pr_draft: false
-
+                  destination_branch: 'main'
+                  pr_title: '${{ steps.extract_branch.outputs.branch }}'
+                  pr_template: '.github/pull_request_template.md'
+                  #pr_reviewer: "${{ github.actor }}"
+                  pr_draft: false
 
             - name: Upload coverage reports to Codecov
               uses: codecov/codecov-action@v3

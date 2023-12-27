@@ -3,7 +3,7 @@ name: Automatically create / update pull request
 on:
     push:
         branches-ignore:
-            - 'mains'
+            - '**'
 
 permissions:
     pull-requests: write
