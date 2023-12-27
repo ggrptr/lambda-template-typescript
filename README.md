@@ -67,6 +67,6 @@ Runs on every push, if the target branch is not the main branch.
 -   Gets the branch name
 -   Creates a pull request to the main branch, using the template in the .github folder
 
-**[MIT License](LICENSE)**
+**[MIT License](https://opensource.org/license/mit/)**
 
 Copyright (c) 2023 [ggrptr](https://github.com/ggrptr)
