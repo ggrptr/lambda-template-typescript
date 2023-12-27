@@ -2,8 +2,11 @@ name: Validating and testing code
 
 on:
     push:
+        branches-ignore:
+            - main
+    pull_request:
         branches:
-            - '**'
+            - main
 
 permissions:
     pull-requests: write
@@ -12,6 +15,15 @@ jobs:
     build:
         runs-on: ubuntu-latest
         steps:
+            - id: cache-workspace
+              name: Cache workspace
+              uses: actions/cache@v2
+              with:
+                path: |
+                  node_modules
+                  .next/cache
+                key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+                restore-keys: ${{ runner.os }}-node-
             - id: checkout
               name: Checkout
               uses: actions/checkout@v3
