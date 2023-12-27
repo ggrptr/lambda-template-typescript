@@ -4,27 +4,25 @@ on:
     push:
         branches:
             - '**'
-        #branches-ignore:
-        #    - main
-    #pull_request:
-    #    branches:
-    #        - main
-
-permissions:
-    pull-requests: write
+    pull_request:
+        branches:
+            - '**'
 
 jobs:
-    build:
+    Validating:
+        strategy:
+            matrix:
+                node-version: ['20.x']
         runs-on: ubuntu-latest
+        if: "!contains(github.event.head_commit.message, '[ci skip]')"
         steps:
-            - id: checkout
-              name: Checkout
+            - name: Checkout
               uses: actions/checkout@v3
-            - id: setup-node
-              name: Setup Node.js 20.x
+
+            - name: Use Node.js ${{ matrix.node-version }}
               uses: actions/setup-node@v3
               with:
-                  node-version: 20.x
+                  node-version: ${{ matrix.node-version }}
 
             - name: Setup dependencies
               run: npm ci
@@ -44,14 +42,14 @@ jobs:
               id: extract_branch
 
             - name: Creating pull request
-              if: "'${{ steps.extract_branch.outputs.branch }}' != 'main'"
+              if: "github.event_name != 'pull_request'"
               uses: repo-sync/pull-request@v2
               with:
-                destination_branch: 'main'
-                pr_title: '${{ steps.extract_branch.outputs.branch }}'
-                pr_template: '.github/pull_request_template.md'
-                #pr_reviewer: "${{ github.actor }}"
-                pr_draft: false
+                  destination_branch: 'main'
+                  pr_title: '${{ steps.extract_branch.outputs.branch }}'
+                  pr_template: '.github/pull_request_template.md'
+                  #pr_reviewer: "${{ github.actor }}"
+                  pr_draft: false
 
             - name: Upload coverage reports to Codecov
               uses: codecov/codecov-action@v3
@@ -61,17 +59,16 @@ jobs:
             - name: Coverage
               uses: irongut/CodeCoverageSummary@v1.3.0
               with:
-                filename: coverage/cobertura-coverage.xml
-                badge: true
-                fail_below_min: true
-                format: markdown
-                output: both
-                thresholds: '60 80'
+                  filename: coverage/cobertura-coverage.xml
+                  badge: true
+                  fail_below_min: true
+                  format: markdown
+                  output: both
+                  thresholds: '60 80'
 
             - name: Adding Coverage PR Comment
               uses: marocchino/sticky-pull-request-comment@v2
               if: github.event_name == 'pull_request'
               with:
-                recreate: true
-                path: code-coverage-results.md
-
+                  recreate: true
+                  path: code-coverage-results.md
