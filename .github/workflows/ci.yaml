@@ -3,10 +3,10 @@ name: Validating and testing code
 on:
     push:
         branches:
-            - 'main'
-    pull_request:
-        branches:
             - '**'
+    #pull_request:
+    #    branches:
+    #        - '**'
 
 jobs:
     Validating:
@@ -30,11 +30,27 @@ jobs:
             - name: Linting
               run: npm run lint
 
-            - name: Spell
+            - name: Spelling
               run: npm run spell
 
-            - name: Tests
+            - name: Testing
               run: npm run test:coverage
+
+            - name: Extract branch name
+              shell: bash
+              run: echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
+              id: extract_branch
+
+            - name: Creating pull request
+              if : github.event_name != "pull_request"
+              uses: repo-sync/pull-request@v2
+              with:
+                destination_branch: 'main'
+                pr_title: '${{ steps.extract_branch.outputs.branch }}'
+                pr_template: '.github/pull_request_template.md'
+                #pr_reviewer: "${{ github.actor }}"
+                pr_draft: false
+
 
             - name: Upload coverage reports to Codecov
               uses: codecov/codecov-action@v3
