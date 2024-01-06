@@ -21,6 +21,7 @@
         "tsconfig.tsbuildinfo",
         "coverage",
         "unit-test-results-junit.xml",
-        "unit-test-results.html"
+        "unit-test-results.html",
+        "test/terraform"
     ]
 }
