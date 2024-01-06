@@ -53,11 +53,6 @@ jobs:
                   #pr_reviewer: "${{ github.actor }}"
                   pr_draft: false
 
-            - name: Upload coverage reports to Codecov
-              uses: codecov/codecov-action@v3
-              env:
-                  CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-
             - name: Coverage
               uses: irongut/CodeCoverageSummary@v1.3.0
               with:

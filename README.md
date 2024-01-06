@@ -2,7 +2,6 @@
 
 [![](https://img.shields.io/badge/github-ggrptr/lambda--template--typescript-%233DA639.svg)](https://github.com/ggrptr/lambda-template-typescript 'github.com/ggrptr/lambda-template-typescript')
 [![License](https://img.shields.io/badge/license-MIT-%233DA639.svg)](https://opensource.org/licenses/MIT)
-[![codecov](https://codecov.io/gh/ggrptr/lambda-template-typescript/graph/badge.svg?token=XLY31XTLOP)](https://codecov.io/gh/ggrptr/lambda-template-typescript)
 
 A simple hello world AWS Lambda function written in TypeScript, to use as a template for my projects.
 It contains the tools I use to develop, test and deploy my TS lambda functions.
