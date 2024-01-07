@@ -11,7 +11,7 @@ data "aws_iam_policy_document" "log_access" {
       "logs:PutLogEvents"
     ]
     resources = [
-      "arn:aws:logs:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:log-group:/aws/lambda/${local.lambda_function_name}:*"
+      "arn:aws:logs:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:log-group:/aws/lambda/${var.lambda.function_name}:*"
     ]
   }
 }
@@ -34,13 +34,12 @@ data "aws_iam_policy_document" "lambda_assume_role" {
 }
 
 resource "aws_iam_role" "test_lambda_role" {
-  name_prefix = local.lambda_function_name
+  name_prefix = var.lambda.function_name
   assume_role_policy = data.aws_iam_policy_document.lambda_assume_role.json
-
 }
 
 resource "aws_iam_policy" "test_lambda_policy" {
-  name_prefix = local.lambda_function_name
+  name_prefix = var.lambda.function_name
   policy = data.aws_iam_policy_document.log_access.json
 }
 
